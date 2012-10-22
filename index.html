@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>verification htmlfile-transport on IE8</title>
+</head>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="http://localhost:7777/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+$(function() {
+    $('#ua').text(navigator.userAgent);
+
+    io.transports = ['htmlfile'];
+
+    var socket = io.connect('http://localhost:7777');
+ 	socket.on('connect',function() {
+        $('#status').append('::connect::');
+        $('#transport').append(socket.socket.transport.name);
+ 	});
+    socket.on('connecting',function() {
+        $('#status').append('::connecting::');
+    });
+    socket.on('connect_failed',function(reason) {
+        $('#status').append('::connect_failed::'+reason);
+    });
+    socket.on('reconnect_failed',function() {
+        $('#status').append('::reconnect_failed::');
+    });
+    socket.on('reconnect',function() {
+        $('#status').append('::reconnect::');
+    });
+    socket.on('reconnecting',function() {
+        $('#status').append('::reconnecting::');
+    });
+    socket.on('disconnect', function (reason) {
+        $('#status').append('->disconnect('+reason+')');
+    });
+    socket.on('error', function (reason) {
+        $('#status').append('->error:'+reason);
+    });
+});
+</script>
+<h1>Status</h1>
+<div id="status"></div>
+<h1>Transport</h1>
+<div id="transport"></div>
+<h1>UA</h1>
+<div id="ua"></div>
+</body>
+</html>
