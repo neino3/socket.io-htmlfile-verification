@@ -1,4 +1,4 @@
-socket.io-htmlfile-verification
+verification code for socket.io htmlfile transport problem
 ===============================
 
 I want to connect to socket.io server by using htmlfile transport from a simple web page which served from other server (simple http server).
