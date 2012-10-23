@@ -18,7 +18,7 @@ You can see this problem on following step:
 
 1. run a contents server
 
-  node contens-server.js
+  node contents-server.js
 
 2. run socket.io server
 
