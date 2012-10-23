@@ -1,8 +1,6 @@
 socket.io-htmlfile-verification
 ===============================
 
-# motivation
-
 I want to connect to socket.io server by using htmlfile transport from a simple web page which served from other server (simple http server).
 When I open a web page on IE8, a connection(htmlfile) is not established.
 
